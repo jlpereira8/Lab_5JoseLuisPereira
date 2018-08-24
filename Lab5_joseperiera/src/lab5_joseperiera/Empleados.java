@@ -79,7 +79,7 @@ public class Empleados {
 
     @Override
     public String toString() {
-        return nombre+puesto;
+        return nombre;
     }
     
     

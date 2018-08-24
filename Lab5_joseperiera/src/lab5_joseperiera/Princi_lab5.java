@@ -97,14 +97,17 @@ public class Princi_lab5 extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        tf_nombre_empleados = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        crud_nombre = new javax.swing.JTextField();
+        crud_fecha = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        cb_empleados = new javax.swing.JComboBox<>();
+        crud_user = new javax.swing.JTextField();
+        crud_contra = new javax.swing.JTextField();
+        crud_correo = new javax.swing.JTextField();
+        cb_crud = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
         Crear_Empleado = new javax.swing.JDialog();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -512,18 +515,25 @@ public class Princi_lab5 extends javax.swing.JFrame {
 
         jLabel19.setText("\"yyyy/MM/dd\"");
 
-        cb_empleados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dulceria", "boleteria", "aseo" }));
+        cb_crud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dulceria", "boleteria", "aseo" }));
 
         jButton5.setText("Crear Empleado");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        jButton3.setText("Modificar Empleado");
+
+        jButton4.setText("Eliminar Empleado");
+
+        jButton18.setText("Ver Empleado");
 
         javax.swing.GroupLayout Principal_AdminLayout = new javax.swing.GroupLayout(Principal_Admin.getContentPane());
         Principal_Admin.getContentPane().setLayout(Principal_AdminLayout);
         Principal_AdminLayout.setHorizontalGroup(
             Principal_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Principal_AdminLayout.createSequentialGroup()
-                .addGap(276, 276, 276)
-                .addComponent(jButton5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(Principal_AdminLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(Principal_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -531,7 +541,7 @@ public class Princi_lab5 extends javax.swing.JFrame {
                     .addGroup(Principal_AdminLayout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addGap(33, 33, 33)
-                        .addComponent(tf_nombre_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(crud_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel24)
                     .addGroup(Principal_AdminLayout.createSequentialGroup()
                         .addGroup(Principal_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,17 +551,27 @@ public class Princi_lab5 extends javax.swing.JFrame {
                             .addComponent(jLabel25))
                         .addGap(18, 18, 18)
                         .addGroup(Principal_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField4)
+                            .addComponent(crud_correo)
                             .addGroup(Principal_AdminLayout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(crud_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel19))
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)
-                            .addComponent(cb_empleados, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                            .addComponent(crud_user)
+                            .addComponent(crud_contra)
+                            .addComponent(cb_crud, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addGap(53, 53, 53))
+            .addGroup(Principal_AdminLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addGap(18, 18, 18)
+                .addComponent(jButton18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Principal_AdminLayout.setVerticalGroup(
             Principal_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -563,33 +583,37 @@ public class Princi_lab5 extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addGroup(Principal_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20)
-                            .addComponent(tf_nombre_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(crud_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addGroup(Principal_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(crud_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel19))
                         .addGap(30, 30, 30)
                         .addGroup(Principal_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel22)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(crud_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23)
                         .addGroup(Principal_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel23)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(crud_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23)
                         .addGroup(Principal_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel24)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(crud_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)
                         .addGroup(Principal_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel25)
-                            .addComponent(cb_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cb_crud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(Principal_AdminLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5)
+                .addGroup(Principal_AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)
+                    .addComponent(jButton18))
                 .addContainerGap())
         );
 
@@ -1319,6 +1343,119 @@ public class Princi_lab5 extends javax.swing.JFrame {
         modeloARBOL.reload();
     }//GEN-LAST:event_jButton17MouseClicked
 
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // Crear empleado 2
+         int aux = 1;
+        for (Empleados u : lista) {
+            if (crud_user.getText().equals(u.getUser())) {
+                aux = 0;
+            }
+        }
+        //dulceria,boleteria,aseo
+        //
+        Date fecha = new Date();
+        DateFormat nf = new SimpleDateFormat("dd/MM/yyyy");//MM = mes || mm= minuto
+        String a = crud_fecha.getText();
+        try {
+            fecha = nf.parse(a);
+        } catch (ParseException ex) {
+
+        }
+        //
+        String nombre = crud_nombre.getText();
+        String user =crud_user.getText();
+        String contra = crud_contra.getText();
+        String correo = crud_correo.getText();
+        String puesto = cb_crud.getSelectedItem().toString();
+        if (aux == 1) {
+            //String nombre, Date fecha, String User, String contra, String correo, String puesto
+            if (cb_crud.getSelectedItem().toString().equals("dulceria")) {
+                lista.add(new Dulcero(nombre, fecha, user, contra, correo, puesto));
+                //***********************************
+                DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_crud.getModel();
+                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+                int centinela = -1;
+                //que hace el for
+                
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if (raiz.getChildAt(i).toString().equals(puesto)) {
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Dulcero(nombre, fecha, user, contra, correo, puesto));
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                        centinela = 1;
+                    }
+                }
+                if (centinela == -1) {
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(puesto);
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Empleados(nombre, fecha, user, contra, correo, puesto));
+
+                    n.add(p);
+                    raiz.add(n);
+                }
+                modeloARBOL.reload();
+                //*****************************************
+            } else if (cb_crud.getSelectedItem().toString().equals("boleteria")) {
+                lista.add(new Boletero(nombre, fecha, user, contra, correo, puesto));
+                //***********************************
+                DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_crud.getModel();
+                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+                int centinela = -1;
+                //que hace el for
+                
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if (raiz.getChildAt(i).toString().equals(puesto)) {
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Boletero(nombre, fecha, user, contra, correo, puesto));
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                        centinela = 1;
+                    }
+                }
+                if (centinela == -1) {
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(puesto);
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Boletero(nombre, fecha, user, contra, correo, puesto));
+
+                    n.add(p);
+                    raiz.add(n);
+                }
+                modeloARBOL.reload();
+                //*****************************************
+            } else if (cb_crud.getSelectedItem().toString().equals("aseo")) {
+                lista.add(new Aseador(nombre, fecha, user, contra, correo, puesto));
+                //***********************************
+                DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_crud.getModel();
+                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+                int centinela = -1;
+                //que hace el for
+                
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if (raiz.getChildAt(i).toString().equals(puesto)) {
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Aseador(nombre, fecha, user, contra, correo, puesto));
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                        centinela = 1;
+                    }
+                }
+                if (centinela == -1) {
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(puesto);
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Aseador(nombre, fecha, user, contra, correo, puesto));
+
+                    n.add(p);
+                    raiz.add(n);
+                }
+                modeloARBOL.reload();
+                //*****************************************
+            } else {
+                JOptionPane.showMessageDialog(this, "Ha ocurrido un error");
+            }
+            JOptionPane.showMessageDialog(this, "Usuario Creado Correctamente ");
+            crud_nombre.setText("");
+            crud_user.setText("");
+            crud_contra.setText("");
+            crud_correo.setText("");
+            crud_fecha.setText("");
+
+        } else {
+            JOptionPane.showMessageDialog(this, "El nombre de Usuario no esta disponible");
+        }
+    }//GEN-LAST:event_jButton5MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1369,10 +1506,15 @@ public class Princi_lab5 extends javax.swing.JFrame {
     private javax.swing.JDialog Principal_Dulces;
     private javax.swing.JDialog Principal_aseo;
     private javax.swing.JComboBox<String> cb_aseo;
+    private javax.swing.JComboBox<String> cb_crud;
     private javax.swing.JComboBox<String> cb_dulces;
-    private javax.swing.JComboBox<String> cb_empleados;
     private javax.swing.JComboBox<String> cb_peliculas;
     private javax.swing.JComboBox<String> cb_registro;
+    private javax.swing.JTextField crud_contra;
+    private javax.swing.JTextField crud_correo;
+    private javax.swing.JTextField crud_fecha;
+    private javax.swing.JTextField crud_nombre;
+    private javax.swing.JTextField crud_user;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1382,7 +1524,10 @@ public class Princi_lab5 extends javax.swing.JFrame {
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -1428,10 +1573,6 @@ public class Princi_lab5 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTree jt_aseo;
     private javax.swing.JTree jt_crud;
     private javax.swing.JTree jt_dulces;
@@ -1451,7 +1592,6 @@ public class Princi_lab5 extends javax.swing.JFrame {
     private javax.swing.JTextField tf_nombre_aseo;
     private javax.swing.JTextField tf_nombre_boleteria;
     private javax.swing.JTextField tf_nombre_dulce;
-    private javax.swing.JTextField tf_nombre_empleados;
     private javax.swing.JTextField tf_sabor_dulce;
     private javax.swing.JTextField tf_usuario;
     // End of variables declaration//GEN-END:variables
