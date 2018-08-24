@@ -1001,44 +1001,52 @@ public class Princi_lab5 extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_dulces.getModel();
-        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
-        //String nombre, String sabor, String categoria
-        String nombre = tf_nombre_dulce.getText();
-        String sabor = tf_sabor_dulce.getText();
-        String categoria = cb_dulces.getSelectedItem().toString();
-        int centinela = -1;
-        //que hace el for
-        for (int i = 0; i < raiz.getChildCount(); i++) {
-            if (raiz.getChildAt(i).toString().equals(categoria)) {
-                DefaultMutableTreeNode p = new DefaultMutableTreeNode(
-                        new Dulces(nombre,
-                                sabor, categoria));
-                ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
-                centinela = 1;
+        try {
+            DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_dulces.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+            //String nombre, String sabor, String categoria
+            String nombre = tf_nombre_dulce.getText();
+            String sabor = tf_sabor_dulce.getText();
+            String categoria = cb_dulces.getSelectedItem().toString();
+            int centinela = -1;
+            //que hace el for
+            for (int i = 0; i < raiz.getChildCount(); i++) {
+                if (raiz.getChildAt(i).toString().equals(categoria)) {
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(
+                            new Dulces(nombre,
+                                    sabor, categoria));
+                    ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                    centinela = 1;
+                }
             }
-        }
-        if (centinela == -1) {
-            DefaultMutableTreeNode n = new DefaultMutableTreeNode(categoria);
-            DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Dulces(nombre,
-                    sabor, categoria));
+            if (centinela == -1) {
+                DefaultMutableTreeNode n = new DefaultMutableTreeNode(categoria);
+                DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Dulces(nombre,
+                        sabor, categoria));
 
-            n.add(p);
-            raiz.add(n);
+                n.add(p);
+                raiz.add(n);
+            }
+            modeloARBOL.reload(); 
+        } catch (Exception e) {
         }
-        modeloARBOL.reload();
+       
 
 
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void opcion_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion_eliminarActionPerformed
-        int response = JOptionPane.showConfirmDialog(this, "Seguro de Eliminar ? ", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (response == JOptionPane.OK_OPTION) {
-            DefaultTreeModel m = (DefaultTreeModel) jt_dulces.getModel();
-            m.removeNodeFromParent(nodo_seleccionado);
-            m.reload();
+        try {
+            int response = JOptionPane.showConfirmDialog(this, "Seguro de Eliminar ? ", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (response == JOptionPane.OK_OPTION) {
+                DefaultTreeModel m = (DefaultTreeModel) jt_dulces.getModel();
+                m.removeNodeFromParent(nodo_seleccionado);
+                m.reload();
 
+            }
+        } catch (Exception e) {
         }
+        
     }//GEN-LAST:event_opcion_eliminarActionPerformed
 
     private void opcion_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion_modificarActionPerformed
@@ -1106,19 +1114,24 @@ public class Princi_lab5 extends javax.swing.JFrame {
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         // TODO add your handling code here:
-        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_dulces.getModel();
+        try {
+           DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_dulces.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
         String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea Visualizar");
         String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea Visualizar");
         int q = Integer.parseInt(opc2);
         int q2 = Integer.parseInt(opc22);
         dulce_seleccionado = ((Dulces) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
-        JOptionPane.showMessageDialog(this, "Nombre: " + dulce_seleccionado.getNombre() + "\n Sabor :" + dulce_seleccionado.getSabor() + "\n Categoria :" + dulce_seleccionado.getCategoria());
+        JOptionPane.showMessageDialog(this, "Nombre: " + dulce_seleccionado.getNombre() + "\n Sabor :" + dulce_seleccionado.getSabor() + "\n Categoria :" + dulce_seleccionado.getCategoria()); 
+        } catch (Exception e) {
+        }
+        
     }//GEN-LAST:event_jButton8MouseClicked
 
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
         // TODO add your handling code here:
-        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_dulces.getModel();
+        try {
+            DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_dulces.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
         String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea modificar");
         String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea modificar");
@@ -1127,11 +1140,15 @@ public class Princi_lab5 extends javax.swing.JFrame {
         DefaultMutableTreeNode m = ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2));
         m.removeFromParent();
         modeloARBOL.reload();
+        } catch (Exception e) {
+        }
+        
     }//GEN-LAST:event_jButton9MouseClicked
 
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
         // Crear Pelicula
-        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_peliculas.getModel();
+        try {
+           DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_peliculas.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
         //String nombre, String sabor, String categoria
         String nombre = tf_nombre_boleteria.getText();
@@ -1155,12 +1172,16 @@ public class Princi_lab5 extends javax.swing.JFrame {
             n.add(p);
             raiz.add(n);
         }
-        modeloARBOL.reload();
+        modeloARBOL.reload(); 
+        } catch (Exception e) {
+        }
+        
     }//GEN-LAST:event_jButton10MouseClicked
 
     private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
         // Eliminar Pelicula
-        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_peliculas.getModel();
+        try {
+            DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_peliculas.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
         String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea modificar");
         String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea modificar");
@@ -1169,6 +1190,9 @@ public class Princi_lab5 extends javax.swing.JFrame {
         DefaultMutableTreeNode m = ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2));
         m.removeFromParent();
         modeloARBOL.reload();
+        } catch (Exception e) {
+        }
+        
     }//GEN-LAST:event_jButton11MouseClicked
 
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
@@ -1320,6 +1344,7 @@ public class Princi_lab5 extends javax.swing.JFrame {
 
     private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
         // Eliminar Implemento
+        try{
         DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_aseo.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
         String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea modificar");
@@ -1329,11 +1354,16 @@ public class Princi_lab5 extends javax.swing.JFrame {
         DefaultMutableTreeNode m = ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2));
         m.removeFromParent();
         modeloARBOL.reload();
+        
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_jButton16MouseClicked
 
     private void jButton17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseClicked
         // Crear Implemento
         //String nombre, String descripcion, String funcion
+        try{
         DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_aseo.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
         String nombre = tf_nombre_aseo.getText();
@@ -1356,6 +1386,9 @@ public class Princi_lab5 extends javax.swing.JFrame {
             raiz.add(n);
         }
         modeloARBOL.reload();
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_jButton17MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
@@ -1473,6 +1506,7 @@ public class Princi_lab5 extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // Eliminar Empleado
+        try{
         DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_crud.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
         String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea modificar");
@@ -1482,6 +1516,9 @@ public class Princi_lab5 extends javax.swing.JFrame {
         DefaultMutableTreeNode m = ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2));
         m.removeFromParent();
         modeloARBOL.reload();
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseClicked
