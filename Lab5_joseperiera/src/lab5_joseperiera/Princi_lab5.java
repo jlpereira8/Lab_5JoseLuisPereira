@@ -525,10 +525,25 @@ public class Princi_lab5 extends javax.swing.JFrame {
         });
 
         jButton3.setText("Modificar Empleado");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         jButton4.setText("Eliminar Empleado");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         jButton18.setText("Ver Empleado");
+        jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton18MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout Principal_AdminLayout = new javax.swing.GroupLayout(Principal_Admin.getContentPane());
         Principal_Admin.getContentPane().setLayout(Principal_AdminLayout);
@@ -902,7 +917,7 @@ public class Princi_lab5 extends javax.swing.JFrame {
                 DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
                 int centinela = -1;
                 //que hace el for
-                
+
                 for (int i = 0; i < raiz.getChildCount(); i++) {
                     if (raiz.getChildAt(i).toString().equals(puesto)) {
                         DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Dulcero(nombre, fecha, user, contra, correo, puesto));
@@ -926,7 +941,7 @@ public class Princi_lab5 extends javax.swing.JFrame {
                 DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
                 int centinela = -1;
                 //que hace el for
-                
+
                 for (int i = 0; i < raiz.getChildCount(); i++) {
                     if (raiz.getChildAt(i).toString().equals(puesto)) {
                         DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Boletero(nombre, fecha, user, contra, correo, puesto));
@@ -950,7 +965,7 @@ public class Princi_lab5 extends javax.swing.JFrame {
                 DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
                 int centinela = -1;
                 //que hace el for
-                
+
                 for (int i = 0; i < raiz.getChildCount(); i++) {
                     if (raiz.getChildAt(i).toString().equals(puesto)) {
                         DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Aseador(nombre, fecha, user, contra, correo, puesto));
@@ -1345,7 +1360,7 @@ public class Princi_lab5 extends javax.swing.JFrame {
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // Crear empleado 2
-         int aux = 1;
+        int aux = 1;
         for (Empleados u : lista) {
             if (crud_user.getText().equals(u.getUser())) {
                 aux = 0;
@@ -1363,7 +1378,7 @@ public class Princi_lab5 extends javax.swing.JFrame {
         }
         //
         String nombre = crud_nombre.getText();
-        String user =crud_user.getText();
+        String user = crud_user.getText();
         String contra = crud_contra.getText();
         String correo = crud_correo.getText();
         String puesto = cb_crud.getSelectedItem().toString();
@@ -1376,7 +1391,7 @@ public class Princi_lab5 extends javax.swing.JFrame {
                 DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
                 int centinela = -1;
                 //que hace el for
-                
+
                 for (int i = 0; i < raiz.getChildCount(); i++) {
                     if (raiz.getChildAt(i).toString().equals(puesto)) {
                         DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Dulcero(nombre, fecha, user, contra, correo, puesto));
@@ -1400,7 +1415,7 @@ public class Princi_lab5 extends javax.swing.JFrame {
                 DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
                 int centinela = -1;
                 //que hace el for
-                
+
                 for (int i = 0; i < raiz.getChildCount(); i++) {
                     if (raiz.getChildAt(i).toString().equals(puesto)) {
                         DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Boletero(nombre, fecha, user, contra, correo, puesto));
@@ -1424,7 +1439,7 @@ public class Princi_lab5 extends javax.swing.JFrame {
                 DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
                 int centinela = -1;
                 //que hace el for
-                
+
                 for (int i = 0; i < raiz.getChildCount(); i++) {
                     if (raiz.getChildAt(i).toString().equals(puesto)) {
                         DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Aseador(nombre, fecha, user, contra, correo, puesto));
@@ -1455,6 +1470,109 @@ public class Princi_lab5 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El nombre de Usuario no esta disponible");
         }
     }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // Eliminar Empleado
+        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_crud.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+        String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea modificar");
+        String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea modificar");
+        int q = Integer.parseInt(opc2);
+        int q2 = Integer.parseInt(opc22);
+        DefaultMutableTreeNode m = ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2));
+        m.removeFromParent();
+        modeloARBOL.reload();
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseClicked
+        // Ver Empleado
+        try {
+            DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_crud.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+            String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea Visualizar");
+            String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea Visualizar");
+            int q = Integer.parseInt(opc2);
+            int q2 = Integer.parseInt(opc22);
+            empleado_seleccionado = ((Empleados) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+            //String nombre, Date fecha, String User, String contra, String correo, String puesto
+            JOptionPane.showMessageDialog(this, "Nombre: " + empleado_seleccionado.getNombre() + "\nFecha de nacimiento :" + empleado_seleccionado.getFecha().toString()
+                    + "\nUsuario :" + empleado_seleccionado.getUser() + "\nContra :" + empleado_seleccionado.getContra() + "\nCorreo :" + empleado_seleccionado.getCorreo() + "\nPuesto :" + empleado_seleccionado.getPuesto());
+        } catch (Exception e) {
+            System.out.println("Posicion no VALIDA!");
+        }
+    }//GEN-LAST:event_jButton18MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // Modificar Empleado
+        try {
+            //String nombre, Date fecha, String User, String contra, String correo, String puesto
+            DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_crud.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+            String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea modificar");
+            String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea modificar");
+            String opc = JOptionPane.showInputDialog(" 1) Modificar Nombre \n 2) Modificar Fecha \n 3) Modificar Usuario \n 4) Modificar Contrasena \n 5) Modificar Correo\n 6) Modificar puesto \nIngrese su desicion:");
+            int q = Integer.parseInt(opc2);
+            int q2 = Integer.parseInt(opc22);
+            int des = Integer.parseInt(opc);
+            if (des == 1) {
+                String nom = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
+                empleado_seleccionado = ((Empleados) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                empleado_seleccionado.setNombre(nom);
+            } else if (des == 2) {
+                String nom = JOptionPane.showInputDialog("Ingrese la nueva fecha como yyyy/MM/dd");
+                empleado_seleccionado = ((Empleados) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                Date fecha = new Date();
+                DateFormat nf = new SimpleDateFormat("dd/MM/yyyy");//MM = mes || mm= minuto
+                try {
+                    fecha = nf.parse(nom);
+                } catch (ParseException ex) {
+
+                }
+                empleado_seleccionado.setFecha(fecha);
+            }else if(des==3){
+                String nom = JOptionPane.showInputDialog("Ingrese el nuevo nombre de usuario");
+                empleado_seleccionado = ((Empleados) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                empleado_seleccionado.setUser(nom);
+            }else if (des==4) {
+                String nom = JOptionPane.showInputDialog("Ingrese la nueva contrasena");
+                empleado_seleccionado = ((Empleados) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                empleado_seleccionado.setContra(nom);
+            }else if (des==5) {
+                String nom = JOptionPane.showInputDialog("Ingrese el nuevo correo");
+                empleado_seleccionado = ((Empleados) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                empleado_seleccionado.setCorreo(nom);
+            }
+            else if (des == 6) {
+                String nom = JOptionPane.showInputDialog("Ingrese la nueva Categoria");
+                empleado_seleccionado = ((Empleados) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                empleado_seleccionado.setPuesto(nom);
+                //String nombre, Date fecha, String User, String contra, String correo, String puesto
+                int centinela = -1;
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if (raiz.getChildAt(i).toString().equals(nom)) {
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(
+                                new Empleados(empleado_seleccionado.getNombre(), empleado_seleccionado.getFecha(), empleado_seleccionado.getUser(), empleado_seleccionado.getContra(),empleado_seleccionado.getCorreo(),empleado_seleccionado.getPuesto()));
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                        centinela = 1;
+                    }
+                }
+                if (centinela == -1) {
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(nom);
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Empleados(empleado_seleccionado.getNombre(), empleado_seleccionado.getFecha(), empleado_seleccionado.getUser(), empleado_seleccionado.getContra(),empleado_seleccionado.getCorreo(),empleado_seleccionado.getPuesto()));
+
+                    n.add(p);
+                    raiz.add(n);
+                }
+                DefaultMutableTreeNode m = ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2));
+                m.removeFromParent();
+                modeloARBOL.reload();
+            } 
+
+        } catch (Exception e) {
+            //System.out.println("ERROR Ingresea una posicion valida");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1600,4 +1718,5 @@ ArrayList<Empleados> lista = new ArrayList();
     Dulces dulce_seleccionado;
     Boleteria boleto_seleccionado;
     Limpieza limpieza_seleccionado;
+    Empleados empleado_seleccionado;
 }
