@@ -5,6 +5,19 @@
  */
 package lab5_joseperiera;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+
 /**
  *
  * @author j0c3lwiz
@@ -16,6 +29,7 @@ public class Princi_lab5 extends javax.swing.JFrame {
      */
     public Princi_lab5() {
         initComponents();
+
     }
 
     /**
@@ -38,6 +52,9 @@ public class Princi_lab5 extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         cb_dulces = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         Principal_Boleteria = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
         jt_peliculas = new javax.swing.JTree();
@@ -50,11 +67,14 @@ public class Princi_lab5 extends javax.swing.JFrame {
         tf_clasificacion_boleterias = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         cb_peliculas = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
         Principal_aseo = new javax.swing.JDialog();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTree3 = new javax.swing.JTree();
+        jt_aseo = new javax.swing.JTree();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         tf_nombre_aseo = new javax.swing.JTextField();
@@ -63,10 +83,13 @@ public class Princi_lab5 extends javax.swing.JFrame {
         tf_descripcion_aseo = new javax.swing.JTextArea();
         jLabel18 = new javax.swing.JLabel();
         cb_aseo = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
         Principal_Admin = new javax.swing.JDialog();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        jt_crud = new javax.swing.JTree();
         jLabel4 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -85,28 +108,39 @@ public class Princi_lab5 extends javax.swing.JFrame {
         Crear_Empleado = new javax.swing.JDialog();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        tf_nombre_empleados1 = new javax.swing.JTextField();
+        registro_nonbre = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        registro_fecha = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        registro_usuario = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        registro_contra = new javax.swing.JTextField();
+        registro_correo = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        cb_empleados1 = new javax.swing.JComboBox<>();
+        cb_registro = new javax.swing.JComboBox<>();
         jButton6 = new javax.swing.JButton();
+        menu_popup_dulces = new javax.swing.JPopupMenu();
+        opcion_eliminar = new javax.swing.JMenuItem();
+        opcion_modificar = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tf_usuario = new javax.swing.JTextField();
         tf_contra = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Dulces");
         jt_dulces.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_dulces.setComponentPopupMenu(menu_popup_dulces);
+        jt_dulces.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_dulcesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jt_dulces);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -121,6 +155,32 @@ public class Princi_lab5 extends javax.swing.JFrame {
         cb_dulces.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chocolates", "Gomitas", "Paletas", "Chicles" }));
 
         jButton2.setText("Crear Dulce");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        jButton7.setText("Modificar Dulce");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
+        jButton8.setText("Visualizar Dulce");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+
+        jButton9.setText("Eliminar Dulce");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout Principal_DulcesLayout = new javax.swing.GroupLayout(Principal_Dulces.getContentPane());
         Principal_Dulces.getContentPane().setLayout(Principal_DulcesLayout);
@@ -128,54 +188,64 @@ public class Princi_lab5 extends javax.swing.JFrame {
             Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Principal_DulcesLayout.createSequentialGroup()
                 .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Principal_DulcesLayout.createSequentialGroup()
-                            .addGap(163, 163, 163)
-                            .addComponent(jLabel5))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Principal_DulcesLayout.createSequentialGroup()
-                            .addGap(21, 21, 21)
-                            .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel8))
-                            .addGap(18, 18, 18)
-                            .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tf_nombre_dulce)
-                                .addComponent(tf_sabor_dulce)
-                                .addComponent(cb_dulces, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(Principal_DulcesLayout.createSequentialGroup()
-                        .addGap(269, 269, 269)
-                        .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                        .addGap(163, 163, 163)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Principal_DulcesLayout.createSequentialGroup()
+                        .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(Principal_DulcesLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8))
+                                .addGap(18, 18, 18)
+                                .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_nombre_dulce)
+                                    .addComponent(tf_sabor_dulce)
+                                    .addComponent(cb_dulces, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Principal_DulcesLayout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(jButton7)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)))
+                        .addGap(49, 49, 49)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addGap(25, 25, 25))
         );
         Principal_DulcesLayout.setVerticalGroup(
             Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Principal_DulcesLayout.createSequentialGroup()
-                .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(Principal_DulcesLayout.createSequentialGroup()
-                        .addContainerGap(38, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Principal_DulcesLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel5)
-                        .addGap(48, 48, 48)
-                        .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(tf_nombre_dulce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(46, 46, 46)
-                        .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(tf_sabor_dulce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(cb_dulces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(23, 23, 23)))
-                .addGap(29, 29, 29))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel5)
+                .addGap(48, 48, 48)
+                .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(tf_nombre_dulce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(tf_sabor_dulce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(cb_dulces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(Principal_DulcesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton7)
+                    .addComponent(jButton8)
+                    .addComponent(jButton9))
+                .addGap(52, 52, 52))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Principal_DulcesLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Boleteria");
@@ -194,10 +264,36 @@ public class Princi_lab5 extends javax.swing.JFrame {
 
         cb_peliculas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "terror", "comedia", "romance", "drama", "acción", "infantil" }));
 
-        jButton3.setText("Crear Pelicula");
-
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel14.setText("Crear Pelicula");
+
+        jButton10.setText("Crear Boleto");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
+
+        jButton11.setText("Eliminar Boleto");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
+
+        jButton12.setText("Visualizar Boleto");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
+
+        jButton13.setText("Modificar Boleto");
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton13MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout Principal_BoleteriaLayout = new javax.swing.GroupLayout(Principal_Boleteria.getContentPane());
         Principal_Boleteria.getContentPane().setLayout(Principal_BoleteriaLayout);
@@ -206,36 +302,41 @@ public class Princi_lab5 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Principal_BoleteriaLayout.createSequentialGroup()
                 .addGroup(Principal_BoleteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Principal_BoleteriaLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
                         .addGroup(Principal_BoleteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Principal_BoleteriaLayout.createSequentialGroup()
-                                .addGap(45, 45, 45)
                                 .addGroup(Principal_BoleteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel9))
+                                .addGap(22, 22, 22)
+                                .addGroup(Principal_BoleteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_nombre_boleteria, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(Principal_BoleteriaLayout.createSequentialGroup()
-                                        .addGroup(Principal_BoleteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel9))
-                                        .addGap(22, 22, 22)
-                                        .addGroup(Principal_BoleteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(tf_nombre_boleteria, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(Principal_BoleteriaLayout.createSequentialGroup()
-                                                .addComponent(tf_duracion_Boleteria, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel11))))
-                                    .addGroup(Principal_BoleteriaLayout.createSequentialGroup()
-                                        .addGroup(Principal_BoleteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel12)
-                                            .addComponent(jLabel13))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(Principal_BoleteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(tf_clasificacion_boleterias)
-                                            .addComponent(cb_peliculas, 0, 192, Short.MAX_VALUE)))))
+                                        .addComponent(tf_duracion_Boleteria, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel11))))
                             .addGroup(Principal_BoleteriaLayout.createSequentialGroup()
-                                .addGap(224, 224, 224)
-                                .addComponent(jButton3)))
+                                .addGroup(Principal_BoleteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel13))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(Principal_BoleteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tf_clasificacion_boleterias)
+                                    .addComponent(cb_peliculas, 0, 192, Short.MAX_VALUE))))
                         .addGap(65, 65, 65))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Principal_BoleteriaLayout.createSequentialGroup()
                         .addComponent(jLabel14)
-                        .addGap(140, 140, 140)))
+                        .addGap(140, 140, 140))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Principal_BoleteriaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton13)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
@@ -266,13 +367,17 @@ public class Princi_lab5 extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(cb_peliculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addGroup(Principal_BoleteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton10)
+                    .addComponent(jButton13)
+                    .addComponent(jButton12)
+                    .addComponent(jButton11))
                 .addGap(35, 35, 35))
         );
 
         treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Aseo");
-        jTree3.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane3.setViewportView(jTree3);
+        jt_aseo.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane3.setViewportView(jt_aseo);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel15.setText("Implementos de Aseo");
@@ -289,7 +394,33 @@ public class Princi_lab5 extends javax.swing.JFrame {
 
         cb_aseo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "limpieza de pisos", "limpieza de vidrios", "limpieza de mesas" }));
 
-        jButton4.setText("Crear Implemento");
+        jButton14.setText("Modificar Implemento");
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton14MouseClicked(evt);
+            }
+        });
+
+        jButton15.setText("Visualizar Implemento");
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton15MouseClicked(evt);
+            }
+        });
+
+        jButton16.setText("Eliminar Implemento");
+        jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton16MouseClicked(evt);
+            }
+        });
+
+        jButton17.setText("Crear Implemento");
+        jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton17MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout Principal_aseoLayout = new javax.swing.GroupLayout(Principal_aseo.getContentPane());
         Principal_aseo.getContentPane().setLayout(Principal_aseoLayout);
@@ -302,25 +433,31 @@ public class Princi_lab5 extends javax.swing.JFrame {
                         .addComponent(jLabel15))
                     .addGroup(Principal_aseoLayout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addGroup(Principal_aseoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(Principal_aseoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Principal_aseoLayout.createSequentialGroup()
-                                .addComponent(jLabel16)
+                                .addComponent(jButton14)
                                 .addGap(18, 18, 18)
-                                .addComponent(tf_nombre_aseo, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButton15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton17))
                             .addGroup(Principal_aseoLayout.createSequentialGroup()
                                 .addGroup(Principal_aseoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel18))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(Principal_aseoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane4)
                                     .addGroup(Principal_aseoLayout.createSequentialGroup()
-                                        .addComponent(cb_aseo, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
-                    .addGroup(Principal_aseoLayout.createSequentialGroup()
-                        .addGap(257, 257, 257)
-                        .addComponent(jButton4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                                        .addComponent(jLabel16)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tf_nombre_aseo, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(Principal_aseoLayout.createSequentialGroup()
+                                        .addGroup(Principal_aseoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel17)
+                                            .addComponent(jLabel18))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(Principal_aseoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cb_aseo, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -345,14 +482,18 @@ public class Princi_lab5 extends javax.swing.JFrame {
                 .addGroup(Principal_aseoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cb_aseo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
-                .addGap(47, 47, 47)
-                .addComponent(jButton4)
-                .addGap(35, 35, 35))
+                .addGap(43, 43, 43)
+                .addGroup(Principal_aseoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton17)
+                    .addComponent(jButton14)
+                    .addComponent(jButton15)
+                    .addComponent(jButton16))
+                .addGap(39, 39, 39))
         );
 
         treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Empleados");
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane5.setViewportView(jTree1);
+        jt_crud.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane5.setViewportView(jt_crud);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel4.setText("CRUD Empleados");
@@ -469,9 +610,14 @@ public class Princi_lab5 extends javax.swing.JFrame {
 
         jLabel33.setText("Puesto");
 
-        cb_empleados1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dulceria", "boleteria", "aseo" }));
+        cb_registro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dulceria", "boleteria", "aseo" }));
 
         jButton6.setText("Registrar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout Crear_EmpleadoLayout = new javax.swing.GroupLayout(Crear_Empleado.getContentPane());
         Crear_Empleado.getContentPane().setLayout(Crear_EmpleadoLayout);
@@ -484,11 +630,11 @@ public class Princi_lab5 extends javax.swing.JFrame {
                         .addComponent(jLabel26))
                     .addGroup(Crear_EmpleadoLayout.createSequentialGroup()
                         .addGap(69, 69, 69)
-                        .addGroup(Crear_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(Crear_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(Crear_EmpleadoLayout.createSequentialGroup()
                                 .addComponent(jLabel27)
                                 .addGap(33, 33, 33)
-                                .addComponent(tf_nombre_empleados1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(registro_nonbre, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel32)
                             .addGroup(Crear_EmpleadoLayout.createSequentialGroup()
                                 .addGroup(Crear_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -496,16 +642,20 @@ public class Princi_lab5 extends javax.swing.JFrame {
                                     .addComponent(jLabel30)
                                     .addComponent(jLabel31)
                                     .addComponent(jLabel33))
-                                .addGap(18, 18, 18)
-                                .addGroup(Crear_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField8)
+                                .addGroup(Crear_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(Crear_EmpleadoLayout.createSequentialGroup()
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel29))
-                                    .addComponent(jTextField6)
-                                    .addComponent(jTextField7)
-                                    .addComponent(cb_empleados1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(Crear_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(registro_correo)
+                                            .addGroup(Crear_EmpleadoLayout.createSequentialGroup()
+                                                .addComponent(registro_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel29))
+                                            .addComponent(registro_contra)
+                                            .addComponent(cb_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Crear_EmpleadoLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(registro_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(Crear_EmpleadoLayout.createSequentialGroup()
                         .addGap(282, 282, 282)
                         .addComponent(jButton6)))
@@ -519,32 +669,48 @@ public class Princi_lab5 extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(Crear_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
-                    .addComponent(tf_nombre_empleados1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(registro_nonbre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(Crear_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(registro_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29))
-                .addGap(30, 30, 30)
-                .addGroup(Crear_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(27, 27, 27)
+                .addGroup(Crear_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                    .addComponent(registro_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(Crear_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel31)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(registro_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(Crear_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel32)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(registro_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(Crear_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
-                    .addComponent(cb_empleados1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_registro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jButton6)
                 .addGap(36, 36, 36))
         );
+
+        opcion_eliminar.setText("Eliminar Persona");
+        opcion_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcion_eliminarActionPerformed(evt);
+            }
+        });
+        menu_popup_dulces.add(opcion_eliminar);
+
+        opcion_modificar.setText("Modificar nombre");
+        opcion_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcion_modificarActionPerformed(evt);
+            }
+        });
+        menu_popup_dulces.add(opcion_modificar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -556,6 +722,20 @@ public class Princi_lab5 extends javax.swing.JFrame {
         jLabel3.setText("Contraseña");
 
         jButton1.setText("Entrar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jLabel34.setText("No tienes cuenta?");
+
+        jLabel35.setText("Haz click aqui");
+        jLabel35.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel35MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -567,20 +747,27 @@ public class Princi_lab5 extends javax.swing.JFrame {
                         .addGap(191, 191, 191)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(tf_contra))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(40, 40, 40)
-                                .addComponent(tf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(225, 225, 225)
                         .addComponent(jButton1)))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(tf_contra))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(40, 40, 40)
+                        .addComponent(tf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel35))
+                    .addComponent(jLabel34))
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -590,8 +777,11 @@ public class Princi_lab5 extends javax.swing.JFrame {
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(tf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                    .addComponent(tf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel34))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel35)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(tf_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -602,6 +792,532 @@ public class Princi_lab5 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        int aux = 0;
+        String cor = tf_usuario.getText();
+        String contra = tf_contra.getText();
+
+        if (cor.equals("admin") && contra.equals("")) {
+            Principal_Admin.setModal(true);
+            Principal_Admin.pack();
+            Principal_Admin.setLocationRelativeTo(this);
+            Principal_Admin.setVisible(true);
+            aux = 1;
+
+        }
+        for (Empleados u : lista) {
+            if (cor.equals(u.getUser()) && contra.equals(u.getContra())) {
+                if (u instanceof Boletero) {
+                    Principal_Boleteria.setModal(true);
+                    Principal_Boleteria.pack();
+                    Principal_Boleteria.setLocationRelativeTo(this);
+                    Principal_Boleteria.setVisible(true);
+                } else if (u instanceof Dulcero) {
+                    Principal_Dulces.setModal(true);
+                    Principal_Dulces.pack();
+                    Principal_Dulces.setLocationRelativeTo(this);
+                    Principal_Dulces.setVisible(true);
+                } else if (u instanceof Aseador) {
+                    Principal_aseo.setModal(true);
+                    Principal_aseo.pack();
+                    Principal_aseo.setLocationRelativeTo(this);
+                    Principal_aseo.setVisible(true);
+                }
+                aux = 1;
+            }
+        }
+
+        if (aux == 0) {
+            JOptionPane.showMessageDialog(this, "El usuario y/o contrasena no son correctos");
+        }
+        tf_usuario.setText("");
+        tf_contra.setText("");
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jLabel35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel35MouseClicked
+        // TODO add your handling code here:
+        Crear_Empleado.setModal(true);
+        Crear_Empleado.pack();
+        Crear_Empleado.setLocationRelativeTo(this);
+        Crear_Empleado.setVisible(true);
+    }//GEN-LAST:event_jLabel35MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        int aux = 1;
+        for (Empleados u : lista) {
+            if (registro_usuario.getText().equals(u.getUser())) {
+                aux = 0;
+            }
+        }
+        //dulceria,boleteria,aseo
+        //
+        Date fecha = new Date();
+        DateFormat nf = new SimpleDateFormat("dd/MM/yyyy");//MM = mes || mm= minuto
+        String a = registro_fecha.getText();
+        try {
+            fecha = nf.parse(a);
+        } catch (ParseException ex) {
+
+        }
+        //
+        String nombre = registro_nonbre.getText();
+        //fecha
+        String user = registro_usuario.getText();
+        String contra = registro_contra.getText();
+        String correo = registro_correo.getText();
+        String puesto = cb_registro.getSelectedItem().toString();
+        if (aux == 1) {
+            //String nombre, Date fecha, String User, String contra, String correo, String puesto
+            if (cb_registro.getSelectedItem().toString().equals("dulceria")) {
+                lista.add(new Dulcero(nombre, fecha, user, contra, correo, puesto));
+                //***********************************
+                DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_crud.getModel();
+                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+                int centinela = -1;
+                //que hace el for
+                
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if (raiz.getChildAt(i).toString().equals(puesto)) {
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Dulcero(nombre, fecha, user, contra, correo, puesto));
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                        centinela = 1;
+                    }
+                }
+                if (centinela == -1) {
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(puesto);
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Empleados(nombre, fecha, user, contra, correo, puesto));
+
+                    n.add(p);
+                    raiz.add(n);
+                }
+                modeloARBOL.reload();
+                //*****************************************
+            } else if (cb_registro.getSelectedItem().toString().equals("boleteria")) {
+                lista.add(new Boletero(nombre, fecha, user, contra, correo, puesto));
+                //***********************************
+                DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_crud.getModel();
+                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+                int centinela = -1;
+                //que hace el for
+                
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if (raiz.getChildAt(i).toString().equals(puesto)) {
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Boletero(nombre, fecha, user, contra, correo, puesto));
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                        centinela = 1;
+                    }
+                }
+                if (centinela == -1) {
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(puesto);
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Boletero(nombre, fecha, user, contra, correo, puesto));
+
+                    n.add(p);
+                    raiz.add(n);
+                }
+                modeloARBOL.reload();
+                //*****************************************
+            } else if (cb_registro.getSelectedItem().toString().equals("aseo")) {
+                lista.add(new Aseador(nombre, fecha, user, contra, correo, puesto));
+                //***********************************
+                DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_crud.getModel();
+                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+                int centinela = -1;
+                //que hace el for
+                
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if (raiz.getChildAt(i).toString().equals(puesto)) {
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Aseador(nombre, fecha, user, contra, correo, puesto));
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                        centinela = 1;
+                    }
+                }
+                if (centinela == -1) {
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(puesto);
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Aseador(nombre, fecha, user, contra, correo, puesto));
+
+                    n.add(p);
+                    raiz.add(n);
+                }
+                modeloARBOL.reload();
+                //*****************************************
+            } else {
+                JOptionPane.showMessageDialog(this, "Ha ocurrido un error");
+            }
+            JOptionPane.showMessageDialog(this, "Usuario Creado Correctamente ");
+            registro_nonbre.setText("");
+            registro_usuario.setText("");
+            registro_contra.setText("");
+            registro_correo.setText("");
+            registro_fecha.setText("");
+            Crear_Empleado.dispose();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "El nombre de Usuario no esta disponible");
+        }
+
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_dulces.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+        //String nombre, String sabor, String categoria
+        String nombre = tf_nombre_dulce.getText();
+        String sabor = tf_sabor_dulce.getText();
+        String categoria = cb_dulces.getSelectedItem().toString();
+        int centinela = -1;
+        //que hace el for
+        for (int i = 0; i < raiz.getChildCount(); i++) {
+            if (raiz.getChildAt(i).toString().equals(categoria)) {
+                DefaultMutableTreeNode p = new DefaultMutableTreeNode(
+                        new Dulces(nombre,
+                                sabor, categoria));
+                ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                centinela = 1;
+            }
+        }
+        if (centinela == -1) {
+            DefaultMutableTreeNode n = new DefaultMutableTreeNode(categoria);
+            DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Dulces(nombre,
+                    sabor, categoria));
+
+            n.add(p);
+            raiz.add(n);
+        }
+        modeloARBOL.reload();
+
+
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void opcion_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion_eliminarActionPerformed
+        int response = JOptionPane.showConfirmDialog(this, "Seguro de Eliminar ? ", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.OK_OPTION) {
+            DefaultTreeModel m = (DefaultTreeModel) jt_dulces.getModel();
+            m.removeNodeFromParent(nodo_seleccionado);
+            m.reload();
+
+        }
+    }//GEN-LAST:event_opcion_eliminarActionPerformed
+
+    private void opcion_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion_modificarActionPerformed
+
+    }//GEN-LAST:event_opcion_modificarActionPerformed
+
+    private void jt_dulcesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_dulcesMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jt_dulcesMouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        try {
+
+            DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_dulces.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+            String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea modificar");
+            String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea modificar");
+            String opc = JOptionPane.showInputDialog("1) Modificar Nombre \n 2) Modificar Sabor \n 3) Modificar Categoria\n Ingrese su desicion:");
+            int q = Integer.parseInt(opc2);
+            int q2 = Integer.parseInt(opc22);
+            int des = Integer.parseInt(opc);
+            if (des == 1) {
+                String nom = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
+                dulce_seleccionado = ((Dulces) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                dulce_seleccionado.setNombre(nom);
+            } else if (des == 2) {
+                String nom = JOptionPane.showInputDialog("Ingrese el nuevo sabor");
+                dulce_seleccionado = ((Dulces) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                dulce_seleccionado.setSabor(nom);
+            } else if (des == 3) {
+                String nom = JOptionPane.showInputDialog("Ingrese la nueva Categoria");
+                dulce_seleccionado = ((Dulces) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                dulce_seleccionado.setCategoria(nom);
+                //DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(new Dulces(dulce_seleccionado.getNombre(), dulce_seleccionado.getSabor(), dulce_seleccionado.getCategoria()));
+                int centinela = -1;
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if (raiz.getChildAt(i).toString().equals(nom)) {
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(
+                                new Dulces(dulce_seleccionado.getNombre(),
+                                        dulce_seleccionado.getSabor(), dulce_seleccionado.getCategoria()));
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                        centinela = 1;
+                    }
+                }
+                if (centinela == -1) {
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(nom);
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Dulces(dulce_seleccionado.getNombre(),
+                            dulce_seleccionado.getSabor(), dulce_seleccionado.getCategoria()));
+
+                    n.add(p);
+                    raiz.add(n);
+                }
+            }
+            DefaultMutableTreeNode m = ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2));
+            m.removeFromParent();
+            modeloARBOL.reload();
+        } catch (Exception e) {
+            //System.out.println("ERROR Ingresea una posicion valida");
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        // TODO add your handling code here:
+        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_dulces.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+        String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea Visualizar");
+        String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea Visualizar");
+        int q = Integer.parseInt(opc2);
+        int q2 = Integer.parseInt(opc22);
+        dulce_seleccionado = ((Dulces) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+        JOptionPane.showMessageDialog(this, "Nombre: " + dulce_seleccionado.getNombre() + "\n Sabor :" + dulce_seleccionado.getSabor() + "\n Categoria :" + dulce_seleccionado.getCategoria());
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        // TODO add your handling code here:
+        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_dulces.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+        String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea modificar");
+        String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea modificar");
+        int q = Integer.parseInt(opc2);
+        int q2 = Integer.parseInt(opc22);
+        DefaultMutableTreeNode m = ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2));
+        m.removeFromParent();
+        modeloARBOL.reload();
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        // Crear Pelicula
+        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_peliculas.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+        //String nombre, String sabor, String categoria
+        String nombre = tf_nombre_boleteria.getText();
+        String sabor = tf_duracion_Boleteria.getText();
+        String clasi = tf_clasificacion_boleterias.getText();
+        String categoria = cb_peliculas.getSelectedItem().toString();
+        int centinela = -1;
+        //que hace el for
+        for (int i = 0; i < raiz.getChildCount(); i++) {
+            if (raiz.getChildAt(i).toString().equals(categoria)) {
+                DefaultMutableTreeNode p = new DefaultMutableTreeNode(
+                        new Boleteria(nombre, sabor, clasi, categoria));
+                ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                centinela = 1;
+            }
+        }
+        if (centinela == -1) {
+            DefaultMutableTreeNode n = new DefaultMutableTreeNode(categoria);
+            DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Boleteria(nombre, sabor, clasi, categoria));
+
+            n.add(p);
+            raiz.add(n);
+        }
+        modeloARBOL.reload();
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        // Eliminar Pelicula
+        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_peliculas.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+        String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea modificar");
+        String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea modificar");
+        int q = Integer.parseInt(opc2);
+        int q2 = Integer.parseInt(opc22);
+        DefaultMutableTreeNode m = ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2));
+        m.removeFromParent();
+        modeloARBOL.reload();
+    }//GEN-LAST:event_jButton11MouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        // Ver Pelicula
+        try {
+            DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_peliculas.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+            String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea Visualizar");
+            String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea Visualizar");
+            int q = Integer.parseInt(opc2);
+            int q2 = Integer.parseInt(opc22);
+            boleto_seleccionado = ((Boleteria) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+            JOptionPane.showMessageDialog(this, "Nombre: " + boleto_seleccionado.getNombre() + "\n Duracion :" + boleto_seleccionado.getDuracion() + "\n Categoria :" + boleto_seleccionado.getCategoria() + "\n Clasificacion :" + boleto_seleccionado.getClasificacion());
+        } catch (Exception e) {
+            System.out.println("Posicion no VALIDA!");
+        }
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
+        // Modificar
+        try {
+
+            DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_peliculas.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+            String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea modificar");
+            String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea modificar");
+            String opc = JOptionPane.showInputDialog("1) Modificar Nombre \n 2) Modificar Duracion \n 3) Modificar Categoria \n 4) Modificar Clasificacion \n Ingrese su desicion:");
+            int q = Integer.parseInt(opc2);
+            int q2 = Integer.parseInt(opc22);
+            int des = Integer.parseInt(opc);
+            if (des == 1) {
+                String nom = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
+                boleto_seleccionado = ((Boleteria) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                boleto_seleccionado.setNombre(nom);
+            } else if (des == 2) {
+                String nom = JOptionPane.showInputDialog("Ingrese la nueva Duracion");
+                boleto_seleccionado = ((Boleteria) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                boleto_seleccionado.setDuracion(nom);
+            } else if (des == 3) {
+                String nom = JOptionPane.showInputDialog("Ingrese la nueva Categoria");
+                boleto_seleccionado = ((Boleteria) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                boleto_seleccionado.setCategoria(nom);
+                //DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(new Dulces(dulce_seleccionado.getNombre(), dulce_seleccionado.getSabor(), dulce_seleccionado.getCategoria()));
+                //String nombre, String duracion, String Clasificacion, String Categoria
+                int centinela = -1;
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if (raiz.getChildAt(i).toString().equals(nom)) {
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(
+                                new Boleteria(boleto_seleccionado.getNombre(), boleto_seleccionado.getDuracion(), boleto_seleccionado.getClasificacion(), boleto_seleccionado.getCategoria()));
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                        centinela = 1;
+                    }
+                }
+                if (centinela == -1) {
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(nom);
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Boleteria(boleto_seleccionado.getNombre(), boleto_seleccionado.getDuracion(), boleto_seleccionado.getClasificacion(),
+                            boleto_seleccionado.getCategoria()));
+
+                    n.add(p);
+                    raiz.add(n);
+                }
+                DefaultMutableTreeNode m = ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2));
+                m.removeFromParent();
+                modeloARBOL.reload();
+            } else if (des == 4) {
+                String nom = JOptionPane.showInputDialog("Ingrese la nueva Clasificacion");
+                boleto_seleccionado = ((Boleteria) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                boleto_seleccionado.setClasificacion(nom);
+            }
+
+        } catch (Exception e) {
+            //System.out.println("ERROR Ingresea una posicion valida");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton13MouseClicked
+
+    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
+        // Modificar Implemento
+        try {
+
+            DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_aseo.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+            String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea modificar");
+            String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea modificar");
+            String opc = JOptionPane.showInputDialog("1) Modificar Nombre \n 2) Modificar Descripcion \n 3) Modificar Funcion  \n Ingrese su desicion:");
+            int q = Integer.parseInt(opc2);
+            int q2 = Integer.parseInt(opc22);
+            int des = Integer.parseInt(opc);
+            if (des == 1) {
+                String nom = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
+                limpieza_seleccionado = ((Limpieza) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                limpieza_seleccionado.setNombre(nom);
+            } else if (des == 2) {
+                String nom = JOptionPane.showInputDialog("Ingrese la nueva Descripcion");
+                limpieza_seleccionado = ((Limpieza) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                limpieza_seleccionado.setDescripcion(nom);
+            } else if (des == 3) {
+                String nom = JOptionPane.showInputDialog("Ingrese la nueva Funcion");
+                limpieza_seleccionado = ((Limpieza) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                limpieza_seleccionado.setFuncion(nom);
+                //DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(new Dulces(dulce_seleccionado.getNombre(), dulce_seleccionado.getSabor(), dulce_seleccionado.getCategoria()));
+                //String nombre, String duracion, String Clasificacion, String Categoria
+                int centinela = -1;
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if (raiz.getChildAt(i).toString().equals(nom)) {
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(
+                                new Limpieza(limpieza_seleccionado.getNombre(), limpieza_seleccionado.getDescripcion(), limpieza_seleccionado.getFuncion()));
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                        centinela = 1;
+                    }
+                }
+                if (centinela == -1) {
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(nom);
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Limpieza(limpieza_seleccionado.getNombre(), limpieza_seleccionado.getDescripcion(), limpieza_seleccionado.getFuncion()));
+
+                    n.add(p);
+                    raiz.add(n);
+                }
+                DefaultMutableTreeNode m = ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2));
+                m.removeFromParent();
+                modeloARBOL.reload();
+            } else if (des == 4) {
+                String nom = JOptionPane.showInputDialog("Ingrese la nueva Clasificacion");
+                limpieza_seleccionado = ((Limpieza) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+                limpieza_seleccionado.setFuncion(nom);
+            }
+
+        } catch (Exception e) {
+            //System.out.println("ERROR Ingresea una posicion valida");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton14MouseClicked
+
+    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+        //Visualizar Implemento
+        try {
+            DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_aseo.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+            String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea Visualizar");
+            String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea Visualizar");
+            int q = Integer.parseInt(opc2);
+            int q2 = Integer.parseInt(opc22);
+            limpieza_seleccionado = ((Limpieza) ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2)).getUserObject());
+            JOptionPane.showMessageDialog(this, "Nombre: " + limpieza_seleccionado.getNombre() + "\n Descripcion :" + limpieza_seleccionado.getDescripcion() + "\n Funcion :" + limpieza_seleccionado.getFuncion());
+        } catch (Exception e) {
+            System.out.println("Posicion no VALIDA!");
+        }
+    }//GEN-LAST:event_jButton15MouseClicked
+
+    private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
+        // Eliminar Implemento
+        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_aseo.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+        String opc2 = JOptionPane.showInputDialog("Ingrese la posicion de que categoria desea modificar");
+        String opc22 = JOptionPane.showInputDialog("Ingrese la posicion del dulce que desea modificar");
+        int q = Integer.parseInt(opc2);
+        int q2 = Integer.parseInt(opc22);
+        DefaultMutableTreeNode m = ((DefaultMutableTreeNode) raiz.getChildAt(q).getChildAt(q2));
+        m.removeFromParent();
+        modeloARBOL.reload();
+    }//GEN-LAST:event_jButton16MouseClicked
+
+    private void jButton17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseClicked
+        // Crear Implemento
+        //String nombre, String descripcion, String funcion
+        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_aseo.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+        String nombre = tf_nombre_aseo.getText();
+        String descripcion = tf_descripcion_aseo.getText();
+        String funcion = cb_aseo.getSelectedItem().toString();
+        int centinela = -1;
+        for (int i = 0; i < raiz.getChildCount(); i++) {
+            if (raiz.getChildAt(i).toString().equals(funcion)) {
+                DefaultMutableTreeNode p = new DefaultMutableTreeNode(
+                        new Limpieza(nombre, descripcion, funcion));
+                ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                centinela = 1;
+            }
+        }
+        if (centinela == -1) {
+            DefaultMutableTreeNode n = new DefaultMutableTreeNode(funcion);
+            DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Limpieza(nombre, descripcion, funcion));
+
+            n.add(p);
+            raiz.add(n);
+        }
+        modeloARBOL.reload();
+    }//GEN-LAST:event_jButton17MouseClicked
 
     /**
      * @param args the command line arguments
@@ -617,16 +1333,24 @@ public class Princi_lab5 extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Princi_lab5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Princi_lab5.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Princi_lab5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Princi_lab5.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Princi_lab5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Princi_lab5.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Princi_lab5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Princi_lab5.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -647,14 +1371,23 @@ public class Princi_lab5 extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_aseo;
     private javax.swing.JComboBox<String> cb_dulces;
     private javax.swing.JComboBox<String> cb_empleados;
-    private javax.swing.JComboBox<String> cb_empleados1;
     private javax.swing.JComboBox<String> cb_peliculas;
+    private javax.swing.JComboBox<String> cb_registro;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -682,6 +1415,8 @@ public class Princi_lab5 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -697,14 +1432,18 @@ public class Princi_lab5 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTree jTree1;
-    private javax.swing.JTree jTree3;
+    private javax.swing.JTree jt_aseo;
+    private javax.swing.JTree jt_crud;
     private javax.swing.JTree jt_dulces;
     private javax.swing.JTree jt_peliculas;
+    private javax.swing.JPopupMenu menu_popup_dulces;
+    private javax.swing.JMenuItem opcion_eliminar;
+    private javax.swing.JMenuItem opcion_modificar;
+    private javax.swing.JTextField registro_contra;
+    private javax.swing.JTextField registro_correo;
+    private javax.swing.JTextField registro_fecha;
+    private javax.swing.JTextField registro_nonbre;
+    private javax.swing.JTextField registro_usuario;
     private javax.swing.JTextField tf_clasificacion_boleterias;
     private javax.swing.JTextField tf_contra;
     private javax.swing.JTextArea tf_descripcion_aseo;
@@ -713,8 +1452,12 @@ public class Princi_lab5 extends javax.swing.JFrame {
     private javax.swing.JTextField tf_nombre_boleteria;
     private javax.swing.JTextField tf_nombre_dulce;
     private javax.swing.JTextField tf_nombre_empleados;
-    private javax.swing.JTextField tf_nombre_empleados1;
     private javax.swing.JTextField tf_sabor_dulce;
     private javax.swing.JTextField tf_usuario;
     // End of variables declaration//GEN-END:variables
+ArrayList<Empleados> lista = new ArrayList();
+    DefaultMutableTreeNode nodo_seleccionado;
+    Dulces dulce_seleccionado;
+    Boleteria boleto_seleccionado;
+    Limpieza limpieza_seleccionado;
 }

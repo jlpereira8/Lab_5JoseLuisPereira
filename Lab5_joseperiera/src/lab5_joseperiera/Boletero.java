@@ -5,10 +5,20 @@
  */
 package lab5_joseperiera;
 
+import java.util.Date;
+
 /**
  *
  * @author j0c3lwiz
  */
 public class Boletero extends Empleados{
+
+    public Boletero() {
+        super();
+    }
+
+    public Boletero(String nombre, Date fecha, String User, String contra, String correo, String puesto) {
+        super(nombre, fecha, User, contra, correo, puesto);
+    }
     
 }
