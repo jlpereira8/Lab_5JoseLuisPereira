@@ -9,6 +9,6 @@ package lab5_joseperiera;
  *
  * @author j0c3lwiz
  */
-public class Aseador {
+public class Aseador extends Empleados{
     
 }
